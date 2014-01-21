@@ -4,6 +4,7 @@ emacs-mtgox
 Simple Emacs extension to display current Mtgox average
 price on the mode-line
 
+![Screenshot](../blob/master/screenshot.png?raw=true)
 
 Installation
 ============
