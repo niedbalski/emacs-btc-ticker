@@ -8,8 +8,6 @@ price on the mode-line
 Installation
 ============
 
-* Todo: (Pending marmalade package)
-
 1. Download `mtgox.el` file and place in directory inside your load-path
 2. Your .emacs file should looks like:
 
@@ -23,5 +21,3 @@ Installation
 ;;Start
 (mtgox-start)
 ```
-
-3. Report any issue via github :)
