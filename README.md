@@ -8,12 +8,12 @@ price on the mode-line
 Installation
 ============
 
-* (Pending marmalade package)
+* Todo: (Pending marmalade package)
 
-# Download `mtgox.el` file and place in directory inside your load-path
-# Your .emacs file should looks like:
+1. Download `mtgox.el` file and place in directory inside your load-path
+2. Your .emacs file should looks like:
 
-```
+```lisp
 (require 'mtgox)
 
 ;;Optional: You can setup the fetch interval
@@ -23,3 +23,5 @@ Installation
 ;;Start
 (mtgox-start)
 ```
+
+3. Report any issue via github :)
