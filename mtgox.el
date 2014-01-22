@@ -3,6 +3,8 @@
 ;; Copyright (C) 2014  Jorge Niedbalski R.
 
 ;; Author: Jorge Niedbalski R. <jnr@metaklass.org>
+;; Version: 0.1
+
 ;; Keywords: news
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -19,9 +21,6 @@
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ;;; Commentary:
-
-;;
-
 ;;; Code:
 
 (require 'request)
@@ -29,7 +28,8 @@
 
 (defgroup mtgox nil
   "mtgox extension"
-  :prefix "mtgox")
+  :group 'comms
+  :prefix "mtgox-")
 
 (defconst mtgox-api-url "http://data.mtgox.com/api/2/BTCUSD/money/ticker")
 (defcustom mtgox-api-poll-interval 10
@@ -56,9 +56,20 @@
                        #'mtgox-fetch))
     (mtgox-update-status)))
 
+(defun mtgox-stop()
+  "Stop poller for the MTGox API"
+  (interactive)
+  (when mtgox-timer
+    (cancel-timer mtgox-timer)
+    (setq mtgox-timer nil)
+    (if (boundp 'mode-line-modes)
+        (delete '(t mtgox-mode-line) mode-line-modes))))
+
 (defun mtgox-update-status()
-  (if (boundp 'mode-line-modes)
-      (add-to-list 'mode-line-modes '(t mtgox-mode-line) t)))
+  (if (not(mtgox-mode))
+      (progn
+        (if (boundp 'mode-line-modes)
+            (add-to-list 'mode-line-modes '(t mtgox-mode-line) t)))))
 
 (defun mtgox-fetch()
   (progn
@@ -70,8 +81,21 @@
                  (let* ((price (elt (assoc-default 'data data) 10))
                         (sell (elt price 3)))
                    (let* ((v (cdr sell)))
-                     (setq mtgox-mode-line v)
+                     (setq mtgox-mode-line (concat " " v))
                      )))))))
+
+;;;###autoload
+(define-minor-mode mtgox-mode
+  "Minor mode to display the latest BTC price at Mt Gox."
+  :init-value nil
+  :global t
+  :lighter mtgox-mode-line
+  (if mtgox-mode
+       (progn
+        (mtgox-start)
+         )
+    (mtgox-stop)
+    ))
 
 (provide 'mtgox)
 ;;; mtgox.el ends here
