@@ -9,8 +9,8 @@ price on the mode-line
 Installation
 ============
 
-1. Install via `package-list-packages` and install it from Melpa
-2. Or you can download the file `mtgox.el` file and place inside your load-path
+1. Install via `package-list-packages` and install ***mtgox*** package from melpa.
+2. Or you can download the file `mtgox.el` and place inside your load-path.
 
 Usage
 =====
