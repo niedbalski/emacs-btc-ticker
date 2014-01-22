@@ -1,7 +1,7 @@
-emacs-mtgox
+Emacs-MTGox
 ===========
 
-Simple Emacs extension to display current Mtgox average
+Simple Emacs minor-mode to display current Mtgox average
 price on the mode-line
 
 ![Screenshot](https://github.com/niedbalski/emacs-mtgox/blob/master/screenshot.png?raw=true)
@@ -9,8 +9,13 @@ price on the mode-line
 Installation
 ============
 
-1. Download `mtgox.el` file and place in directory inside your load-path
-2. Your .emacs file should looks like:
+1. Install via `package-list-packages` and install it from Melpa
+2. Or you can download the file `mtgox.el` file and place inside your load-path
+
+Usage
+=====
+
+Your .emacs file should looks like:
 
 ```lisp
 (require 'mtgox)
@@ -19,6 +24,6 @@ Installation
 ;;default: 10 secs
 (setq mtgox-api-poll-interval 10)
 
-;;Start
-(mtgox-start)
+;;Enable mtgox-mode
+(mtgox-mode 1)
 ```
