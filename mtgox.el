@@ -4,7 +4,7 @@
 
 ;; Author: Jorge Niedbalski R. <jnr@metaklass.org>
 ;; Version: 0.1
-
+;; Package-Requires: ((json "1.2") (request "0.2.0"))
 ;; Keywords: news
 
 ;; This program is free software; you can redistribute it and/or modify
