@@ -40,15 +40,13 @@
 (defvar mtgox-timer nil
   "Mtgox API poll timer")
 
-(defvar mtgox-mode-line "0.00"
+(defvar mtgox-mode-line " $0.00"
   "Displayed on mode-line")
 
 ;;very risky :)
 (put 'mtgox-mode-line 'risky-local-variable t)
 
 (defun mtgox-start()
-  "Start poller for time MTGox API"
-  (interactive)
   (unless mtgox-timer
     (setq mtgox-timer
           (run-at-time "0 sec"
@@ -57,8 +55,6 @@
     (mtgox-update-status)))
 
 (defun mtgox-stop()
-  "Stop poller for the MTGox API"
-  (interactive)
   (when mtgox-timer
     (cancel-timer mtgox-timer)
     (setq mtgox-timer nil)
