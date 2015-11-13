@@ -1,8 +1,5 @@
 ;;; btc-ticker.el --- Shows latest bitcoin price
 
-;; This is a fork of `emacs-mtgox`.
-;; Forking done by Raymond Penners <raymond.penners@intenct.nl>
-
 ;; Copyright (C) 2014  Jorge Niedbalski R.
 
 ;; Author: Jorge Niedbalski R. <jnr@metaklass.org>
