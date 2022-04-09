@@ -69,14 +69,13 @@
             (add-to-list 'mode-line-modes '(t btc-ticker-mode-line) t)))))
 
 (defun btc-ticker-fetch()
-  (progn
-    (request
-     bitstamp-api-url
-     :parser 'json-read
-     :success (function*
-               (lambda(&key data &allow-other-keys)
-		 (setq btc-ticker-mode-line
-		       (concat " $" (assoc-default 'last data))))))))
+  (request
+    bitstamp-api-url
+    :parser 'json-read
+    :success (cl-function
+              (lambda(&key data &allow-other-keys)
+                (setq btc-ticker-mode-line
+                      (concat " $" (assoc-default 'last data)))))))
 
 ;;;###autoload
 (define-minor-mode btc-ticker-mode
